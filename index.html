@@ -14,39 +14,54 @@
             margin: 0;
             background-color: #f0f0f0;
         }
+
         .container {
             display: flex;
             gap: 20px;
         }
+
         .team {
             background-color: #fff;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+
         h2 {
             text-align: center;
             margin-top: 0;
         }
-        .red h2 { color: #ff4136; }
-        .white h2 { color: #001f3f; }
+
+        .red h2 {
+            color: #ff4136;
+        }
+
+        .white h2 {
+            color: #001f3f;
+        }
+
         .roster {
             display: flex;
             gap: 20px;
         }
+
         .position {
             flex: 1;
         }
+
         h3 {
             margin-top: 0;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         li {
             margin-bottom: 5px;
         }
+
         #error-message {
             color: red;
             text-align: center;
@@ -92,11 +107,13 @@
             const data = [];
 
             for (let i = 1; i < lines.length; i++) {
-                const values = lines[i].split(',');
+                const
+                    values = lines[i].split(',');
                 if (values.length === headers.length) {
                     const entry = {};
                     headers.forEach((header, index) => {
-                        entry[header] = values[index];
+                        // Trim any leading/trailing whitespaces from the values
+                        entry[header] = values[index].trim();
                     });
                     data.push(entry);
                 }
@@ -115,7 +132,6 @@
             };
 
             positions.forEach(position => {
-                elements[position].innerHTML = ''; // Clear existing content
                 data.forEach(row => {
                     const player = row[position];
                     if (player && player.trim() !== '') {
