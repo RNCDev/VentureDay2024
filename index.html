@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hockey Team Rosters</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .team {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .red h2 {
+            color: #ff4136;
+        }
+
+        .white h2 {
+            color: #001f3f;
+        }
+
+        .roster {
+            display: flex;
+            gap: 20px;
+        }
+
+        .position {
+            flex: 1;
+        }
+
+        h3 {
+            margin-top: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        #error-message {
+            color: red;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="team red">
+            <h2>Red Team</h2>
+            <div class="roster">
+                <div class="position">
+                    <h3>Offense</h3>
+                    <ul id="redOffense"></ul>
+                </div>
+                <div class="position">
+                    <h3>Defense</h3>
+                    <ul id="redDefense"></ul>
+                </div>
+            </div>
+        </div>
+        <div class="team white">
+            <h2>White Team</h2>
+            <div class="roster">
+                <div class="position">
+                    <h3>Offense</h3>
+                    <ul id="whiteOffense"></ul>
+                </div>
+                <div class="position">
+                    <h3>Defense</h3>
+                    <ul id="whiteDefense"></ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="error-message"></div>
+
+    <script>
+        function parseCSV(csv) {
+            const lines = csv.split('\n');
+            const headers = lines[0].split(',');
+            const data = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                const values = lines[i].split(',');
+                if (values.length === headers.length) {
+                    const entry = {};
+                    headers.forEach((header, index) => {
+                        entry[header] = values[index];
+                    });
+                    data.push(entry);
+                }
+            }
+
+            return data;
+        }
+
+        function displayRosters(data) {
+            const positions = ['Red Offense', 'Red Defense', 'White Offense', 'White Defense'];
+            const elements = {
+                'Red Offense': document.getElementById('redOffense'),
+                'Red Defense': document.getElementById('redDefense'),
+                'White Offense': document.getElementById('whiteOffense'),
+                'White Defense': document.getElementById('whiteDefense')
+            };
+
+            positions.forEach(position => {
+                data.forEach(row => {
+                    const player = row[position];
+                    if (player && player.trim() !== '') {
+                        const li = document.createElement('li');
+                        li.textContent = player;
+                        elements[position].appendChild(li);
+                    }
+                });
+            });
+        }
+
+        fetch('Lineups.csv')
+            .then(response => response.text())
+            .then(csvData => {
+                const data = parseCSV(csvData);
+                displayRosters(data);
+            })
+            .catch(error => {
+                console.error('Error loading the CSV file:', error);
+                document.getElementById('error-message').textContent = 'Error loading the roster data. Please make sure the CSV file is in the correct location and the page is served from a web server.';
+            });
+    </script>
+</body>
+</html>
