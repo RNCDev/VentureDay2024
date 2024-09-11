@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -132,8 +132,10 @@
             };
 
             positions.forEach(position => {
+                console.log(`Processing position: ${position}`); // Add this line for debugging
                 data.forEach(row => {
                     const player = row[position];
+                    console.log(`Player for ${position}: ${player}`); // Add this line for debugging
                     if (player && player.trim() !== '') {
                         const li = document.createElement('li');
                         li.textContent = player;
