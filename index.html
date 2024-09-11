@@ -6,30 +6,41 @@
     <title>Hockey Team Rosters</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             background-color: #f0f0f0;
+            background-image: url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
         }
 
         .container {
             display: flex;
-            gap: 20px;
+            gap: 40px;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
         }
 
         .team {
             background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            min-width: 300px;
         }
 
         h2 {
             text-align: center;
             margin-top: 0;
+            font-size: 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .red h2 {
@@ -42,7 +53,7 @@
 
         .roster {
             display: flex;
-            gap: 20px;
+            gap: 30px;
         }
 
         .position {
@@ -51,6 +62,9 @@
 
         h3 {
             margin-top: 0;
+            font-size: 22px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 10px;
         }
 
         ul {
@@ -59,13 +73,26 @@
         }
 
         li {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            font-size: 18px;
+            padding: 5px 10px;
+            background-color: #f8f8f8;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
+
+            li:hover {
+                background-color: #e8e8e8;
+            }
 
         #error-message {
             color: red;
             text-align: center;
             margin-top: 20px;
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
         }
     </style>
 </head>
@@ -107,12 +134,10 @@
             const data = [];
 
             for (let i = 1; i < lines.length; i++) {
-                const
-                    values = lines[i].split(',');
+                const values = lines[i].split(',');
                 if (values.length === headers.length) {
                     const entry = {};
                     headers.forEach((header, index) => {
-                        // Trim any leading/trailing whitespaces from the values
                         entry[header] = values[index].trim();
                     });
                     data.push(entry);
@@ -132,10 +157,8 @@
             };
 
             positions.forEach(position => {
-                console.log(`Processing position: ${position}`); // Add this line for debugging
                 data.forEach(row => {
                     const player = row[position];
-                    console.log(`Player for ${position}: ${player}`); // Add this line for debugging
                     if (player && player.trim() !== '') {
                         const li = document.createElement('li');
                         li.textContent = player;
