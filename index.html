@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,54 +14,39 @@
             margin: 0;
             background-color: #f0f0f0;
         }
-
         .container {
             display: flex;
             gap: 20px;
         }
-
         .team {
             background-color: #fff;
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-
         h2 {
             text-align: center;
             margin-top: 0;
         }
-
-        .red h2 {
-            color: #ff4136;
-        }
-
-        .white h2 {
-            color: #001f3f;
-        }
-
+        .red h2 { color: #ff4136; }
+        .white h2 { color: #001f3f; }
         .roster {
             display: flex;
             gap: 20px;
         }
-
         .position {
             flex: 1;
         }
-
         h3 {
             margin-top: 0;
         }
-
         ul {
             list-style-type: none;
             padding: 0;
         }
-
         li {
             margin-bottom: 5px;
         }
-
         #error-message {
             color: red;
             text-align: center;
@@ -130,6 +115,7 @@
             };
 
             positions.forEach(position => {
+                elements[position].innerHTML = ''; // Clear existing content
                 data.forEach(row => {
                     const player = row[position];
                     if (player && player.trim() !== '') {
