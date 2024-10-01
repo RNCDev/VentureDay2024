@@ -1,183 +1,131 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hockey Team Rosters</title>
+    <title>Agenda</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
             margin: 0;
-            background-color: #f0f0f0;
-            background-image: url('/api/placeholder/1200/800');
-            background-size: cover;
-            background-position: center;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
         }
 
         .container {
-            display: flex;
-            gap: 40px;
-            padding: 40px;
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-        }
-
-        .team {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
             background-color: #fff;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.1);
-            min-width: 300px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
         }
 
-        h2 {
+        h1 {
             text-align: center;
-            margin-top: 0;
-            font-size: 28px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            color: #2c3e50;
         }
 
-        .red h2 {
-            color: #ff4136;
+        .session {
+            margin-bottom: 30px;
         }
 
-        .white h2 {
-            color: #001f3f;
-        }
-
-        .roster {
-            display: flex;
-            gap: 30px;
-        }
-
-        .position {
-            flex: 1;
-        }
-
-        h3 {
-            margin-top: 0;
-            font-size: 22px;
-            border-bottom: 2px solid #ccc;
-            padding-bottom: 10px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-            font-size: 18px;
-            padding: 5px 10px;
-            background-color: #f8f8f8;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-            li:hover {
-                background-color: #e8e8e8;
+            .session h2 {
+                margin-bottom: 5px;
+                color: #34495e;
             }
 
-        #error-message {
-            color: red;
+            .session p {
+                line-height: 1.6;
+                margin: 5px 0;
+            }
+
+        .session-time {
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background-color: #ddd;
+            margin: 20px 0;
+        }
+
+        .lunch {
             text-align: center;
-            margin-top: 20px;
-            font-size: 18px;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 10px;
-            border-radius: 5px;
+            font-weight: bold;
+            color: #16a085;
+            margin-bottom: 40px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="team red">
-            <h2>Red Team</h2>
-            <div class="roster">
-                <div class="position">
-                    <h3>Offense</h3>
-                    <ul id="redOffense"></ul>
-                </div>
-                <div class="position">
-                    <h3>Defense</h3>
-                    <ul id="redDefense"></ul>
-                </div>
-            </div>
+        <h1>Event Agenda</h1>
+
+        <div class="session">
+            <p class="session-time">9:00am – 9:30am</p>
+            <h2>Roland Kolbeck</h2>
+            <p>Spirovant is revolutionizing gene therapy for respiratory diseases. Our transformative technology addresses potency challenges in gene therapy by administering AAV with Augmenter directly to the lungs. The clinical-stage lead program, SP-101, is the first and only inhaled AAV developed with an inhaled Augmenter (doxorubicin) that enhances transgene expression by 100 - 1,000x. This technology targets the unmet needs of cystic fibrosis (CF) patients who do not benefit from small molecule modulators.</p>
         </div>
-        <div class="team white">
-            <h2>White Team</h2>
-            <div class="roster">
-                <div class="position">
-                    <h3>Offense</h3>
-                    <ul id="whiteOffense"></ul>
-                </div>
-                <div class="position">
-                    <h3>Defense</h3>
-                    <ul id="whiteDefense"></ul>
-                </div>
-            </div>
+
+        <hr>
+
+        <div class="session">
+            <p class="session-time">9:30am – 10:00am</p>
+            <h2>Yael Mosse</h2>
+            <p>We are developing a class of cancer drugs with significant improvements over standard treatments. Antibody Drug Conjugates (ADCs) are one of the fastest-growing drug classes in oncology, combining monoclonal antibodies and cytotoxic drugs. We aim to expedite the development of a first-in-class ALK-directed ADC for pediatric cancers, particularly neuroblastoma, based on ALK protein expression in tumors but not in normal tissues.</p>
         </div>
+
+        <hr>
+
+        <div class="session">
+            <p class="session-time">10:00am – 10:30am</p>
+            <h2>Will Bailis</h2>
+            <p>Our breakthrough technology isolates rare therapeutically effective lymphocytes, such as B and T cells, using label-free sorting. This platform enables high-throughput purification of B cells and selection of potent T cells for adoptive therapy without the need for additional cell culture. This technology advances the development of monoclonal antibodies and CAR T cell therapies.</p>
+        </div>
+
+        <hr>
+
+        <div class="session">
+            <p class="session-time">10:30am – 11:00am</p>
+            <h2>Yi Xing</h2>
+            <p>Yi Xing, PhD, established the Center for Computational and Genomic Medicine at CHOP in 2018. His lab has pioneered a long-read RNA sequencing platform that comprehensively profiles changes and variations in RNA molecules, aiding in the timely diagnosis of genetic diseases with improved accuracy.</p>
+        </div>
+
+        <hr>
+
+        <div class="lunch">
+            11:00am – 12:00pm LUNCH
+        </div>
+
+        <hr>
+
+        <div class="session">
+            <p class="session-time">12:00pm – 12:30pm</p>
+            <h2>Jonathan Miner</h2>
+            <p>[Insert Description Here]</p>
+        </div>
+
+        <hr>
+
+        <div class="session">
+            <p class="session-time">12:30pm – 1:00pm</p>
+            <h2>Arthur Howe / Abdolmohamad Rostami</h2>
+            <p>We are developing the first disease-halting therapy for multiple sclerosis (MS), which could also apply to other autoimmune diseases. Our strategy utilizes oligodendrocyte-derived extracellular vesicles containing multiple myelin antigens, aiming to induce immune tolerance and treat MS without the severe side effects of current immunosuppressive drugs.</p>
+        </div>
+
+        <hr>
+
+        <div class="session">
+            <p class="session-time">1:00pm – 1:30pm</p>
+            <h2>Christoph Ellebrecht</h2>
+            <p>My research focuses on understanding and manipulating immune cells for precision cellular immunotherapies. In particular, we aim to target tissue-resident T cells, which contribute to chronic autoimmune diseases like psoriasis. Using genome engineering and high-throughput screening, we have identified novel therapeutic targets that could dislodge these cells, offering potential cures.</p>
+        </div>
+
     </div>
-    <div id="error-message"></div>
-
-    <script>
-        function parseCSV(csv) {
-            const lines = csv.split('\n');
-            const headers = lines[0].split(',');
-            const data = [];
-
-            for (let i = 1; i < lines.length; i++) {
-                const values = lines[i].split(',');
-                if (values.length === headers.length) {
-                    const entry = {};
-                    headers.forEach((header, index) => {
-                        entry[header] = values[index].trim();
-                    });
-                    data.push(entry);
-                }
-            }
-
-            return data;
-        }
-
-        function displayRosters(data) {
-            const positions = ['Red Offense', 'Red Defense', 'White Offense', 'White Defense'];
-            const elements = {
-                'Red Offense': document.getElementById('redOffense'),
-                'Red Defense': document.getElementById('redDefense'),
-                'White Offense': document.getElementById('whiteOffense'),
-                'White Defense': document.getElementById('whiteDefense')
-            };
-
-            positions.forEach(position => {
-                data.forEach(row => {
-                    const player = row[position];
-                    if (player && player.trim() !== '') {
-                        const li = document.createElement('li');
-                        li.textContent = player;
-                        elements[position].appendChild(li);
-                    }
-                });
-            });
-        }
-
-        fetch('Lineups.csv')
-            .then(response => response.text())
-            .then(csvData => {
-                const data = parseCSV(csvData);
-                displayRosters(data);
-            })
-            .catch(error => {
-                console.error('Error loading the CSV file:', error);
-                document.getElementById('error-message').textContent = 'Error loading the roster data. Please make sure the CSV file is in the correct location and the page is served from a web server.';
-            });
-    </script>
 </body>
 </html>
